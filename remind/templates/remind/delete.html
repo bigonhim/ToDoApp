@@ -1,0 +1,38 @@
+{% extends  'remind/main.html' %}
+{%block content%}
+         <style>
+         .delete{
+            background-color: rgb(78, 71, 71);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+         }
+         .content{
+            padding: 20px;
+         }
+     
+
+
+
+         </style>
+
+
+    <div class="header">
+        <a style="color: white;"  href="{% url 'tasks'%}">&#8592; GO BACK</a>
+    </div>
+    <div class="content">
+    <h4>ARE YOU SURE YOU WANT TO DELETE THIS TASK<h4>"{{task}}"</h4> </h4>
+    
+    <form method="post">
+        {% csrf_token%}
+        {{form.as_p}}
+        <input type="submit"  class="delete"  value="DELETE">
+
+    </form>
+</div>
+
+{% endblock content %}

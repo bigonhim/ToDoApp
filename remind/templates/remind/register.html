@@ -1,0 +1,39 @@
+{% extends  'remind/main.html' %}
+{%block content%}
+     <style>
+            input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            width: 300px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            margin-left: 80px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+     </style>
+
+<div class="header-r">
+ <h4> <a href="{% url 'login'%}">&#8592; GO BACK</a></h4>
+</div>
+
+  <h2 style="display: flex; justify-content: center; align-items: center; color: #45a049;"  >REGISTER</h2>
+  <form method="POST" action="">
+    {% csrf_token %}
+    <label>Username</label>
+    {{form.username}}
+    <label>Password</label>
+    {{form.password1}}
+    <label>Password Confirmation</label>
+    {{form.password2}}
+
+    <input type="submit" value="REGISTER">
+  </form>
+{% endblock content %}

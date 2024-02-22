@@ -1,0 +1,180 @@
+<!-- {% extends 'remind/main.html'   %}
+
+{%block content%} -->
+    <title>TODOAPP</title>
+            <style>
+                a{
+                    text-decoration: none;
+                }
+                body{
+                    margin: 0%;
+                    box-sizing: border-box;
+                }
+                .container{
+                   
+                    max-width: 550px;
+                    background-color:#ffffff;
+                    border-radius: 5px;
+                    margin: auto;
+                    margin-top:3%;
+                    box-shadow: 0.5px 0.5px 1.5px 2px;
+
+                }
+                .header{
+                    color: #ffffff;
+                    background-color:rgb(63, 62, 62);
+                    box-sizing: border-box;
+                    padding: 15px;
+                }
+                #logout{
+                    float: right;
+                    width: 100px;
+                    border-radius: 5px;
+                    padding: 4.2px;
+                    background-color: #be0f0f;
+                    color: #fff;
+                }
+                .tasks{
+                    padding: 20px;
+                }
+                .search-add{
+                    display: flex;
+            
+                    padding: 0%;
+                }
+                .search-container {
+                    text-align: center;
+                  
+                }
+
+                input[type="text"] {
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    width: 250px;
+                    font-size: 16px;
+                    margin-right: 5px;
+                }
+
+                button {
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    text-align: center;
+                    font-size: 16px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                button:hover {
+                    background-color: #45a049;
+                }
+                #add-item{
+                         margin-left: 100px; 
+                         color: #2c2b2b;
+                         padding: 0%;
+                }
+                .complete-icon{
+                    border-radius: 50%;
+                    border: 1px black;
+                    background-color:#45a049;
+                    width: 25px;
+                    height: 25px;
+                    margin-top: 20px;
+                    margin-right: 10px;
+                }
+                .task-complete{
+                    display: flex;
+                   
+                }
+                .task-incomplete{
+                    display: flex;
+                }
+                .delete{
+                  color:2c2b2b ;
+                  display: flex;
+                  justify-content: flex-end;
+                  margin-left: auto;
+                }
+                 .incomplete-icon{
+                    border-radius: 50%;
+                    border: 1px solid black;
+                    background-color:#fff;
+                    width: 25px;
+                    height: 25px;
+                    margin-top: 20px;
+                    margin-right: 10px;
+                }
+            
+                    </style>
+ <div class="container">
+                           
+                      <div class="header">
+                        <form  action="{% url 'logout' %}" method="POST" >
+                            {% csrf_token %}
+                            <input id="logout"type="submit" value="Logout">
+                        </form>
+                        <h1>Welcome {{ request.user }}</h1>
+                        <h2><i>You have {{count}} incomplete task{{ count|pluralize:"s"}}</i></h2> 
+                        
+                        {% if user.is_authenticated %}
+                        {% else %}
+                        <h3><a href="{% url 'login'  %}">Login</a></h3>
+                        <h2><a href="{% url 'register' %}">REGISTER</a></h2>
+                        {% endif %}
+                    </div>
+
+
+   <div class="tasks">
+                     <div class="search-add">
+                        <form  style="margin-top: 30px;"  method="get">
+                            <input type="text" name="search-area">
+                            <button type="submit">Search</button>
+                        </form>
+                        <a id="add-item"   href="{% url 'add' %}"><h1>&#10010;</h1></a>
+                    </div>           
+                        {% for task in tasks %}
+                        <hr>
+                        <div class="task-complete">
+                       
+                            {% if task.complete %}
+                            <div class="complete-icon"></div>
+                            
+                                <h2><s><i><a style="color: #2c2b2b;" href="{% url 'update'  task.id  %}">{{task}}</a></i></s></h2>
+                                <div class="delete">
+                                   <h2><a class="delete" href="{% url  'delete' task.id %}">&#10008;</a></h2>
+                                </div>
+
+                            </div>
+                            {%else%}
+                        <div class="task-incomplete"></div>
+                           <div class="incomplete-icon"></div>
+                                    <h2><a style="color: #2c2b2b;" href="{% url 'update'  task.id  %}">{{task}}</a></h2>
+                                    <div class="delete">
+                                    <h2><a  class="delete"  href="{% url  'delete' task.id %}">&#10008;</a></h2>
+                                </div>
+
+                        </div>
+                        {%endif%}
+                                <!-- <h2><a href="{% url 'update'  task.id  %}">Update</a></h2>
+                            
+                                <h2><a href="{% url  'delete' task.id %}">Delete</a></h2> -->
+                      
+                        {% empty %}
+
+                        <h2>NO ITEMS ADDED</h2>
+
+                        {% endfor %}
+                    </div>
+
+
+                        
+                    </div>
+                        <!-- {% endblock content%} -->
+
+
+    </div>
+
+
+

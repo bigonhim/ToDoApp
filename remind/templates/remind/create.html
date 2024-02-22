@@ -1,0 +1,31 @@
+{% extends  'remind/main.html' %}
+{%block content%}
+        <style>
+                input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            width: 200px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            margin-left: 80px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+            
+        </style>
+    <form method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+
+        <input type="submit" value="Add">
+
+    </form>
+{% endblock content  %}

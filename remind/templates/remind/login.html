@@ -1,0 +1,71 @@
+{% extends 'remind/main.html'  %}
+{%block content%}
+      <style>
+         a :hover{
+            color: #45a049;
+         }
+         .login{
+            background-color: #45a049;
+            max-width: 700px;
+         }
+           h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #000000;
+           }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            width: 300px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            margin-left: 80px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #register{
+         font-size: 1.3em;
+         margin-left: 10px;
+         color: #45a049;
+        }
+        #register a:hover{
+         color: #d25511;
+         transition: 0.2s ease;
+        }
+   
+      </style>
+      <header>
+         <h1 style="color: #45a049; display: flex; justify-content: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">LOGIN</h1>
+      </header>
+      <div class="login"></div>
+      <form method="POST" action=""> 
+         {% csrf_token %}
+       
+         {{form.as_p}}
+
+         <h1><input type="submit" value="Login"></h1>
+    
+
+
+      </form>
+      <h4>Don't Have an account? <a id="register" href="{% url 'register' %}"> REGISTER</a></h4>
+   </div>
+{%endblock content %}      

@@ -1,0 +1,30 @@
+{% extends  'remind/main.html' %}
+{%block content%}
+          <style>
+       .add-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        }
+        .update-from{
+          width: 400px;
+        }
+
+          </style>
+    
+
+
+
+
+<div class="update-form">
+      <form method="post" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="submit" class="add-button">
+      </form>
+    </div>
+{% endblock %}
