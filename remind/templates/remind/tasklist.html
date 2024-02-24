@@ -141,7 +141,7 @@
                             {% if task.complete %}
                             <div class="complete-icon"></div>
                             
-                                <h2><s><i><a style="color: #2c2b2b;" href="{% url 'update'  task.id  %}">{{task}}</a></i></s></h2>
+                                <h2><s><i><a style="color: #2c2b2b;" href="{% url 'update' task.id  %}">{{task}}</a></i></s></h2>
                                 <div class="delete">
                                    <h2><a class="delete" href="{% url  'delete' task.id %}">&#10008;</a></h2>
                                 </div>
@@ -157,10 +157,7 @@
 
                         </div>
                         {%endif%}
-                                <!-- <h2><a href="{% url 'update'  task.id  %}">Update</a></h2>
-                            
-                                <h2><a href="{% url  'delete' task.id %}">Delete</a></h2> -->
-                      
+                                
                         {% empty %}
 
                         <h2>NO ITEMS ADDED</h2>
